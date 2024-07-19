@@ -14,6 +14,7 @@ import org.testcontainers.utility.DockerImageName;
 import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
 import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
 import software.amazon.awssdk.regions.Region;
+import software.amazon.awssdk.services.s3.S3AsyncClient;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.CreateBucketRequest;
 import software.amazon.awssdk.services.s3.model.GetObjectRequest;
@@ -46,6 +47,7 @@ public class LocalStackIT {
             .waitingFor(Wait.forLogMessage(".*Ready.*", 1));
 
     private static S3Client s3Client;
+    // private static S3AsyncClient s3Client;
 
     @BeforeAll
     public static void setUpLocalStack() throws URISyntaxException {
@@ -61,8 +63,19 @@ public class LocalStackIT {
                 .forcePathStyle(true)
                 .build();
 
-        log.info("S3 Client setup completed with endpoint: {}",
-                localStackContainer.getEndpoint());
+        // s3Client = S3AsyncClient
+        //         .crtBuilder()
+        //         .endpointOverride(localStackContainer.getEndpoint())
+        //         .credentialsProvider(
+        //                 StaticCredentialsProvider.create(
+        //                         AwsBasicCredentials.create(localStackContainer.getAccessKey(),
+        //                                 localStackContainer.getSecretKey())))
+        //         .region(Region.of(localStackContainer.getRegion()))
+        //         .forcePathStyle(true)
+        //         .build();
+
+        log.info("S3 Client setup completed with endpoint: {} region {}",
+                localStackContainer.getEndpoint(), localStackContainer.getRegion());
     }
 
     @BeforeEach

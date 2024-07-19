@@ -37,9 +37,7 @@
     <logger name="org.springframework.cache" level="WARN"/>
 
     <logger name="org.testcontainers" level="trace"/>
-    <logger name="org.testcontainers" level="trace"/>
-
-
+    <logger name="software.amazon.awssdk" level="trace"/>
 
     <springProperty name="log.level" source="logging.level.root" defaultValue="INFO" />
     <root level="${log.level}">
