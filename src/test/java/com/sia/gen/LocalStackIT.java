@@ -65,6 +65,9 @@ public class LocalStackIT {
     @BeforeEach
     public void setup() throws Exception {
         try {
+
+            log.info("setup...");
+
             // Create bucket
             s3Client.createBucket(CreateBucketRequest.builder().bucket("sample-bucket").build());
             log.info("Bucket 'sample-bucket' created successfully.");
