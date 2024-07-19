@@ -1,0 +1,4 @@
+arrivalTime,businessLeisure,cabinCategory,creationDate,currencyCode,departureTime,destination,officeIdCountry,origin,totalAmount,nPAX
+2023-06-18 15:00,Leisure,Economy,2023-06-01,USD,2023-06-18 12:00,New York,USA,Los Angeles,500.00,1
+2023-07-22 20:30,Business,Business,2023-07-15,USD,2023-07-22 17:30,London,UK,Paris,750.00,1
+2023-08-10 08:15,Leisure,First,2023-07-28,USD,2023-08-10 05:00,Tokyo,Japan,Sydney,1200.00,2

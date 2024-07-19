@@ -1,0 +1,53 @@
+# ===================================================================
+# Use this configuration for "dev" (i.e. local development) profile.
+#
+# Standard Spring Boot properties.
+# Full reference is available at:
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ===================================================================
+
+logging:
+  level:
+    ROOT: INFO
+    org.hibernate.SQL: DEBUG
+    com.sia.gen: DEBUG
+    # software.amazon.awssdk: DEBUG
+
+server:
+  error:
+    whitelabel:
+      enabled: false
+
+spring:
+  config:
+    # Load corresponding yml, e.g. application-uat.yml should load camel-uat.yml
+    import: # CAMEL-IMPORT-NEEDLE, do not remove
+
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    disable-swagger-default-url: false
+
+management:
+  metrics:
+    tags:
+      application: ${spring.application.name}
+  health:
+    probes:
+      enabled: true
+    show-details: always
+    livenessState:
+      enabled: true
+    readinessState:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        # See https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html#actuator.endpoints
+        include: info,health # pe-springboot-camel-needle-management-endpoints
+
+
+# pe-springboot-camel-needle, do not remove/modify [start]
+# pe-springboot-camel-needle, do not remove/modify [end]

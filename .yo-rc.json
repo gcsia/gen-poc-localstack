@@ -1,0 +1,25 @@
+{
+  "generator-pe-springboot": {
+    "appName": "gen-poc-localstack",
+    "appKey": "PE",
+    "packageName": "com.sia.gen",
+    "serverPort": 8088,
+    "databaseTypes": [],
+    "messagingTypes": [],
+    "fileBasedIntTypes": [
+      "s3"
+    ],
+    "updateMvnSettings": true,
+    "packageFolder": "com/sia/gen",
+    "JAVA_VERSION": "17",
+    "DEFAULT_APP_VERSION": "0.0.1-SNAPSHOT",
+    "PE_SPRINGBOOT_GENERATOR_VERSION": "1.0.0-RC1",
+    "PE_SPRINGBOOT_VERSION": "1.0.0-RC1",
+    "POSTGRESQL_IMAGE_VERSION": "16.0-alpine",
+    "POSTGRESQL_IMAGE": "postgres:16.0-alpine",
+    "MYSQL_IMAGE_VERSION": "8.2.0",
+    "MYSQL_IMAGE": "mysql:8.2.0",
+    "ORACLE_IMAGE_VERSION": "latest",
+    "ORACLE_IMAGE": "gvenzl/oracle-xe:latest"
+  }
+}
