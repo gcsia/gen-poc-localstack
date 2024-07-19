@@ -81,6 +81,8 @@ public class LocalStackIT {
                     .key("sample.csv")
                     .build(), Paths.get("src/test/resources/sample.csv"));
 
+            log.debug("Supposed to upload finish");
+
         } catch (S3Exception e) {
             log.error("S3Exception: {}", e.awsErrorDetails().errorMessage());
         } catch (Exception e) {
@@ -89,6 +91,7 @@ public class LocalStackIT {
     }
 
     private void logFileContentFromS3(String bucketName, String key) throws Exception {
+
         GetObjectRequest getObjectRequest = GetObjectRequest.builder()
                 .bucket(bucketName)
                 .key(key)
