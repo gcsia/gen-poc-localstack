@@ -37,7 +37,7 @@ public class LocalStackIT {
 
     @Container
     public static LocalStackContainer localStackContainer = new LocalStackContainer(
-            DockerImageName.parse("localstack/localstack:latest"))
+            DockerImageName.parse("localstack/localstack:3.5.0"))
             // .withNetwork(network)
             // .withNetworkAliases("localstack")
             .withExposedPorts(4566)
