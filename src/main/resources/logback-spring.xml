@@ -36,6 +36,11 @@
     <logger name="org.springframework.boot.autoconfigure.logging" level="INFO"/>
     <logger name="org.springframework.cache" level="WARN"/>
 
+    <logger name="org.testcontainers" level="trace"/>
+    <logger name="org.testcontainers" level="trace"/>
+
+
+
     <springProperty name="log.level" source="logging.level.root" defaultValue="INFO" />
     <root level="${log.level}">
         <appender-ref ref="CONSOLE" />
