@@ -102,12 +102,12 @@
             <version>2.26.21</version>
             <scope>test</scope>
         </dependency>
-        <!-- <dependency>
+        <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>aws-sdk-java</artifactId>
             <version>2.26.21</version>
             <scope>test</scope>
-        </dependency> -->
+        </dependency>
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>s3</artifactId>

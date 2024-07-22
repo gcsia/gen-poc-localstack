@@ -37,15 +37,19 @@ public class LocalStackIT {
 
     @Container
     public static LocalStackContainer localStackContainer = new LocalStackContainer(
-            DockerImageName.parse("localstack/localstack:3.5.0"))
+            // DockerImageName.parse("localstack/localstack:3.5.0"))
+            DockerImageName.parse("localstack/localstack:1.0.0"))
             // .withNetwork(network)
             // .withNetworkAliases("localstack")
             // .withExposedPorts(4566)
             .withEnv("DEBUG", "1")
             .withEnv("LS_LOG", "trace")
-            .withEnv("SKIP_SSL_CERT_DOWNLOAD", "1")
+            // .withEnv("SKIP_SSL_CERT_DOWNLOAD", "1")
+            .withEnv("SKIP_SSL_CERT_DOWNLOAD", "true")
             .withEnv("AWS_DEFAULT_REGION", Region.US_EAST_2.toString())
             .withServices(LocalStackContainer.Service.S3)
+            .withEnv("OUTBOUND_HTTP_PROXY", "http://{proxy}:{port}")
+            .withEnv("OUTBOUND_HTTPS_PROXY", "http://{proxy}:{port}")
             .waitingFor(Wait.forLogMessage(".*Ready.*", 1));
 
     private static S3Client s3Client;
