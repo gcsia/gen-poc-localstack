@@ -1,6 +1,8 @@
 package com.sia.gen;
 
 import lombok.extern.slf4j.Slf4j;
+
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -38,7 +40,7 @@ public class LocalStackIT {
     @Container
     public static LocalStackContainer localStackContainer = new LocalStackContainer(
             // DockerImageName.parse("localstack/localstack:3.5.0"))
-            DockerImageName.parse("localstack/localstack:1.0.0"))
+            DockerImageName.parse("localstack/localstack:s3-latest"))
             // .withNetwork(network)
             // .withNetworkAliases("localstack")
             // .withExposedPorts(4566)
@@ -48,8 +50,8 @@ public class LocalStackIT {
             .withEnv("SKIP_SSL_CERT_DOWNLOAD", "true")
             .withEnv("AWS_DEFAULT_REGION", Region.US_EAST_2.toString())
             .withServices(LocalStackContainer.Service.S3)
-            .withEnv("OUTBOUND_HTTP_PROXY", "http://{proxy}:{port}")
-            .withEnv("OUTBOUND_HTTPS_PROXY", "http://{proxy}:{port}")
+            // .withEnv("OUTBOUND_HTTP_PROXY", "http://{proxy}:{port}")
+            // .withEnv("OUTBOUND_HTTPS_PROXY", "http://{proxy}:{port}")
             .waitingFor(Wait.forLogMessage(".*Ready.*", 1));
 
     private static S3Client s3Client;
@@ -110,6 +112,8 @@ public class LocalStackIT {
             log.debug("Supposed to upload finish");
 
         } catch (S3Exception e) {
+            log.error("ExceptionUtils.getMessage: {}", ExceptionUtils.getMessage(e));
+            log.error("awsErrorDetails: {}", e.awsErrorDetails());
             log.error("S3Exception: {}", e.awsErrorDetails().errorMessage());
         } catch (Exception e) {
             log.error("Exception during setup: ", e);
