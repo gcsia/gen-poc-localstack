@@ -40,9 +40,11 @@ public class LocalStackIT {
             DockerImageName.parse("localstack/localstack:3.5.0"))
             // .withNetwork(network)
             // .withNetworkAliases("localstack")
-            .withExposedPorts(4566)
+            // .withExposedPorts(4566)
             .withEnv("DEBUG", "1")
+            .withEnv("LS_LOG", "trace")
             .withEnv("SKIP_SSL_CERT_DOWNLOAD", "1")
+            .withEnv("AWS_DEFAULT_REGION", Region.US_EAST_2.toString())
             .withServices(LocalStackContainer.Service.S3)
             .waitingFor(Wait.forLogMessage(".*Ready.*", 1));
 
@@ -51,6 +53,7 @@ public class LocalStackIT {
 
     @BeforeAll
     public static void setUpLocalStack() throws URISyntaxException {
+
         log.info("Setting up LocalStack container...");
         s3Client = S3Client.builder()
                 .endpointOverride(localStackContainer.getEndpoint())
