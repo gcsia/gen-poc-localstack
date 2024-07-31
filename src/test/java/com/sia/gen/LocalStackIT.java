@@ -60,7 +60,7 @@ public class LocalStackIT {
     @BeforeAll
     public static void setUpLocalStack() throws URISyntaxException {
 
-        log.info("Setting up LocalStack container...");
+        log.info("Setting up LocalStack container!!!");
         s3Client = S3Client.builder()
                 .endpointOverride(localStackContainer.getEndpoint())
                 // .endpointOverride(new URI("http://localhost:4566"))
